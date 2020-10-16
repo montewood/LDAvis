@@ -39,7 +39,7 @@ renderVis <- function(expr, env = parent.frame(), quoted = FALSE) {
     #  digest will guarantee a unique json file name for each output
     jsonFile <- paste0(digest::digest(val), '.json')
     tmp <- tempdir()
-    cat(val, file = file.path(tmp, jsonFile))
+    cat(val, file = file(file.path(tmp, jsonFile), encoding = 'UTF-8'))
     shiny::addResourcePath("ldavisAssets", tmp)
     list(jsonFile = jsonFile)
   }
